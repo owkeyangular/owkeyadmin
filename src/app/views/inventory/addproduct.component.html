@@ -1,0 +1,94 @@
+<div class="breadcrumb">
+    <h5>Add Product</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <form #frm="ngForm" (ngSubmit)="addProduct(frm)">
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <div class="card">
+                        <div class="card-header"><strong>Product Details</strong></div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1"> Product Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Product Name" name="pname" type="text" placeholder="Enter Product Name" pattern="^[a-zA-Z ]*$" class="form-control" [ngClass]="{'is-invalid': pname.invalid && (pname.dirty || pname.touched),'is-valid': pname.valid && (pname.dirty || pname.touched)}"
+                                    [(ngModel)]="inventory.pname" oninput="validity.valid||(value='');" #pname="ngModel" required>
+                                <div [hidden]="pname.valid || pname.pristine" class="invalid-feedback">
+                                    Product Name is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Model Number</label>
+                                <input type="number" placeholder="Enter Model Number" class="form-control" name="mnumber" type="text" placeholder="Enter Model Number" pattern="^[0-9]*$" oninput="validity.valid||(value='');" class="form-control" [ngClass]="{'is-invalid': mnumber.invalid && (mnumber.dirty || mnumber.touched),'is-valid': mnumber.valid && (mnumber.dirty || mnumber.touched)}"
+                                    [(ngModel)]="inventory.mnumber" #mnumber="ngModel" required>
+                                <div [hidden]="mnumber.valid || mnumber.pristine" class="invalid-feedback">
+                                    Model Number is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Description</label>
+                                <textarea class="form-control" rows="3" name="description" type="text" class="form-control" [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched),'is-valid': description.valid && (description.dirty || description.touched)}"
+                                    [(ngModel)]="inventory.description" #description="ngModel" required></textarea>
+                                <div [hidden]="description.valid || description.pristine" class="invalid-feedback">
+                                    Description is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class="form-control-label">Price</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-usd"></i></span>
+                                    </div>
+                                    <input type="text" name="price" type="text" class="form-control" [ngClass]="{'is-invalid': price.invalid && (price.dirty || price.touched),'is-valid': price.valid && (price.dirty || price.touched)}" pattern="^[0-9]*$" oninput="validity.valid||(value='');"
+                                        [(ngModel)]="inventory.price" #price="ngModel" required>
+                                    <div [hidden]="price.valid || price.pristine" class="invalid-feedback">
+                                        Price is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Quantity</label>
+                                <input type="text" placeholder="QTY" name="qty" type="text" class="form-control" [ngClass]="{'is-invalid': qty.invalid && (qty.dirty || qty.touched),'is-valid': qty.valid && (qty.dirty || qty.touched)}" pattern="^[0-9]*$" oninput="validity.valid||(value='');"
+                                    [(ngModel)]="inventory.qty" #qty="ngModel" required>
+                                <div [hidden]="qty.valid || qty.pristine" class="invalid-feedback">
+                                    Quantity is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Discount</label>
+                                <input type="text" placeholder="Discount" name="discount" type="text" class="form-control" [ngClass]="{'is-invalid': discount.invalid && (discount.dirty || discount.touched),'is-valid': discount.valid && (discount.dirty || discount.touched)}" pattern="^[0-9]*$"
+                                    oninput="validity.valid||(value='');" [(ngModel)]="inventory.discount" #discount="ngModel" required>
+                                <div [hidden]="discount.valid || discount.pristine" class="invalid-feedback">
+                                    Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">
+                            User Manual / Documnet</label>
+                                <input type="file" placeholder="User Manual / Documnet" name="usermanual" class="form-control" [ngClass]="{'is-invalid': usermanual.invalid && (usermanual.dirty || usermanual.touched),'is-valid': usermanual.valid && (usermanual.dirty || usermanual.touched)}"
+                                    [(ngModel)]="inventory.usermanual" #usermanual="ngModel" required>
+                                <div [hidden]="usermanual.valid || usermanual.pristine" class="invalid-feedback">
+                                    User Manual / Documnet is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class="form-control-label">Product Image</label>
+                                <input type="file" class="dropify" name="upload" [(ngModel)]="inventory.upload" #upload="ngModel" required/>
+                            </div>
+
+                            <div class="d-flex">
+                                <div>
+                                    <button class="btn btn-square btn-danger" type="button"><i class="fa fa-ban"></i>&nbsp;Reset</button>
+                                </div>
+                                <div class="ml-auto">
+                                    <button type="submit" class="btn btn-square btn-primary" (click)="addProduct(frm)" [disabled]="frm.invalid"><i class="fa fa-dot-circle-o"></i> &nbsp;Submit </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- row -->
+    </div>
+</div>

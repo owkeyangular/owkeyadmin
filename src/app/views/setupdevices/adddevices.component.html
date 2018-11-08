@@ -1,0 +1,113 @@
+<div class="breadcrumb">
+    <h5>Add Device</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form #frm="ngForm" (ngSubmit)="addDevices(frm)">
+                    <div class="card ">
+                        <div class="card-header">
+                            <strong>Add Device <small>Company</small></strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group"><label for="company" class=" form-control-label">Device Name</label>
+                                        <input type="text" placeholder="Name Of The Device" class="form-control" name="devicename" [(ngModel)]="addDevice.devicename" [ngClass]="{'is-invalid': devicename.invalid && (devicename.dirty || devicename.touched),'is-valid': devicename.valid && (devicename.dirty || devicename.touched)}"
+                                            pattern="^[a-zA-Z ]*$" #devicename="ngModel" oninput="validity.valid||(value='');" required>
+                                        <div [hidden]="devicename.valid || devicename.pristine" class="invalid-feedback">
+                                            Device Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group"><label for="vat" class=" form-control-label">Device Id </label>
+                                        <input type="text" placeholder="Enter Device Id" class="form-control" name="deviceid" [(ngModel)]="addDevice.deviceid" [ngClass]="{'is-invalid': deviceid.invalid && (deviceid.dirty || deviceid.touched),'is-valid': deviceid.valid && (deviceid.dirty || deviceid.touched)}"
+                                            pattern="^[a-zA-Z ]*$" #deviceid="ngModel" oninput="validity.valid||(value='');" required>
+                                        <div [hidden]="deviceid.valid || deviceid.pristine" class="invalid-feedback">
+                                            Device Id is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <label>Enable</label>
+                                    <label class="switch">
+                                    <input type="checkbox" checked name="usercheck" [(ngModel)]="addDevice.devicecheck" #devicecheck="ngModel" required>
+                                    <span class="slider round"></span>
+                                </label>
+                                </div>
+                                <div class="col-1 rm-2">
+                                    <button type="button" class="btn btn-primary btn-sm" (click)="addDevices(frm)" [disabled]="frm.invalid"><i class="fa fa-plus-square"></i>
+                                    Add</button>
+                                    <!-- <span><i class="fa fa-plus-square" style="font-size:26px; cursor: pointer;"></i></span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <form #distributor="ngForm" (ngSubmit)="addDevicedistributor(distributor)">
+                    <div class="card ">
+                        <div class="card-header">
+                            <strong>Add Device <small>Distributor</small></strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group"><label for="company" class="form-control-label">Device Name</label>
+                                        <input type="text" placeholder="Name Of The Device" class="form-control" name="distributordevicename" [(ngModel)]="addDevice.distributordevicename" [ngClass]="{'is-invalid': distributordevicename.invalid && (distributordevicename.dirty || distributordevicename.touched),'is-valid': distributordevicename.valid && (distributordevicename.dirty || distributordevicename.touched)}"
+                                            pattern="^[a-zA-Z ]*$" #distributordevicename="ngModel" oninput="validity.valid||(value='');" required>
+                                        <div [hidden]="distributordevicename.valid || distributordevicename.pristine" class="invalid-feedback">
+                                            Device Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group"><label class="form-control-label">Device Id </label>
+                                        <input type="text" placeholder="Enter Device Id" class="form-control" name="distributordeviceId" [(ngModel)]="addDevice.distributordeviceId" [ngClass]="{'is-invalid': distributordeviceId.invalid && (distributordeviceId.dirty || distributordeviceId.touched),'is-valid': distributordeviceId.valid && (distributordeviceId.dirty || distributordeviceId.touched)}"
+                                            pattern="^[a-zA-Z ]*$" #distributordeviceId="ngModel" oninput="validity.valid||(value='');" required>
+                                        <div [hidden]="distributordeviceId.valid || distributordeviceId.pristine" class="invalid-feedback">
+                                            Device Id is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label class="form-control-label">User Name </label>
+                                        <input type="text" placeholder="Enter User Name" class="form-control" name="distributorUserName" [(ngModel)]="addDevice.distributorUserName" [ngClass]="{'is-invalid': distributorUserName.invalid && (distributorUserName.dirty || distributorUserName.touched),'is-valid': distributorUserName.valid && (distributorUserName.dirty || distributorUserName.touched)}"
+                                            pattern="^[a-zA-Z ]*$" #distributorUserName="ngModel" oninput="validity.valid||(value='');" required>
+                                        <div [hidden]="distributorUserName.valid || distributorUserName.pristine" class="invalid-feedback">
+                                            User Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <label>Enable</label>
+                                    <label class="switch">
+                                    <input type="checkbox" checked name="distributorCheck" [(ngModel)]="addDevice.distributorCheck" #distributorCheck="ngModel" required>
+                                    <span class="slider round"></span>
+                                </label>
+                                </div>
+                                <div class="col-1 rm-2">
+                                    <button type="button" class="btn btn-primary btn-sm" (click)="addDevicedistributor(distributor)" [disabled]="distributor.invalid"><i class="fa fa-plus-square"></i>
+                                    Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

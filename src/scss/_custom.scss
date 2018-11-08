@@ -1,0 +1,50 @@
+// Here you can add other styles
+@import 'variables';
+@import'checkbox';
+//custom styles
+.breadcrumb {
+    padding: $rm-1 $rm-1;
+}
+
+.breadcrumb {
+    position: relative;
+    top: $rm-03;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: $rm-33;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+    cursor: not-allowed;
+}
+
+form {
+    display: inherit;
+    margin-top: inherit;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.rm-2 {
+    margin-top: $rm-2;
+}
+
+.rm-35 {
+    margin-top: $rm-35;
+}
+
+.rm-23 {
+    margin-top: $rm-23;
+}
+
+.rm-22 {
+    margin-top: $rm-22;
+}
+
+.rm-2 {
+    padding-left: $rm-2;
+}

@@ -1,0 +1,142 @@
+<div class="breadcrumb">
+    <h5>Settings</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-4">
+                <form #frm="ngForm" (ngSubmit)="licenseDistributor(frm)">
+                    <div class="card">
+                        <div class="card-header"><strong>License </strong> Distributor</div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label for="nusers" class="control-label mb-1"> No.Of Users</label>
+                                <input type="text" class="form-control" placeholder="No.Of Users" name="nusers" [(ngModel)]="license.nusers" [ngClass]="{'is-invalid': nusers.invalid && (nusers.dirty || nusers.touched),'is-valid': nusers.valid && (nusers.dirty || nusers.touched)}" pattern="^[0-9]*$"
+                                    #nusers="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="nusers.valid || nusers.pristine" class="invalid-feedback">
+                                    Number Of Users is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">License Discount</label>
+                                <input type="text" placeholder="License Discount" class="form-control" name="licenseldiscount" [(ngModel)]="license.licenseldiscount" [ngClass]="{'is-invalid': licenseldiscount.invalid && (licenseldiscount.dirty || licenseldiscount.touched),'is-valid': licenseldiscount.valid && (licenseldiscount.dirty || licenseldiscount.touched)}"
+                                    pattern="^[0-9]*$" #licenseldiscount="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="licenseldiscount.valid || licenseldiscount.pristine" class="invalid-feedback">
+                                    License Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Device Discount</label>
+                                <input type="text" placeholder="Device Discount" class="form-control" name="devicediscount" [(ngModel)]="license.devicediscount" [ngClass]="{'is-invalid': devicediscount.invalid && (devicediscount.dirty || devicediscount.touched),'is-valid': devicediscount.valid && (devicediscount.dirty || devicediscount.touched)}"
+                                    pattern="^[0-9]*$" #devicediscount="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="devicediscount.valid || devicediscount.pristine" class="invalid-feedback">
+                                    Device Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">License Cost</label>
+                                <input type="text" placeholder="License Cost" class="form-control" name="licensecost" [(ngModel)]="license.licensecost" [ngClass]="{'is-invalid': licensecost.invalid && (licensecost.dirty || licensecost.touched),'is-valid': licensecost.valid && (licensecost.dirty || licensecost.touched)}"
+                                    pattern="^[0-9]*$" #licensecost="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="licensecost.valid || licensecost.pristine" class="invalid-feedback">
+                                    License Cost is required
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" (click)="licenseDistributor(frm)" [disabled]="frm.invalid">Update</button>.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-4">
+                <form #cmp="ngForm" (ngSubmit)="licenseCompanies(cmp)">
+                    <div class="card">
+                        <div class="card-header"><strong>License </strong> Companies</div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label for="cusers" class="control-label mb-1"> No.Of Users</label>
+                                <input type="text" class="form-control" placeholder="No.Of Users" name="cusers" [(ngModel)]="license.cusers" [ngClass]="{'is-invalid': cusers.invalid && (cusers.dirty || cusers.touched),'is-valid': cusers.valid && (cusers.dirty || cusers.touched)}" pattern="^[0-9]*$"
+                                    #cusers="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="cusers.valid || cusers.pristine" class="invalid-feedback">
+                                    Number Of Users is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">License Discount</label>
+                                <input type="text" placeholder="License Discount" class="form-control" name="clicenselDiscount" [(ngModel)]="license.clicenselDiscount" [ngClass]="{'is-invalid': clicenselDiscount.invalid && (clicenselDiscount.dirty || clicenselDiscount.touched),'is-valid': clicenselDiscount.valid && (clicenselDiscount.dirty || clicenselDiscount.touched)}"
+                                    pattern="^[0-9]*$" #clicenselDiscount="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="clicenselDiscount.valid || clicenselDiscount.pristine" class="invalid-feedback">
+                                    License Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Device Discount</label>
+                                <input type="text" placeholder="Device Discount" class="form-control" name="cdeviceDiscount" [(ngModel)]="license.cdeviceDiscount" [ngClass]="{'is-invalid': cdeviceDiscount.invalid && (cdeviceDiscount.dirty || cdeviceDiscount.touched),'is-valid': cdeviceDiscount.valid && (cdeviceDiscount.dirty || cdeviceDiscount.touched)}"
+                                    pattern="^[0-9]*$" #cdeviceDiscount="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="cdeviceDiscount.valid || cdeviceDiscount.pristine" class="invalid-feedback">
+                                    Device Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">License Cost</label>
+                                <input type="text" placeholder="License Cost" class="form-control" name="clicenseCost" [(ngModel)]="license.clicenseCost" [ngClass]="{'is-invalid': clicenseCost.invalid && (clicenseCost.dirty || clicenseCost.touched),'is-valid': clicenseCost.valid && (clicenseCost.dirty || clicenseCost.touched)}"
+                                    pattern="^[0-9]*$" #clicenseCost="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="clicenseCost.valid || clicenseCost.pristine" class="invalid-feedback">
+                                    License Cost is required
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" (click)="licenseCompanies(cmp)" [disabled]="cmp.invalid">Update</button>.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-4">
+                <form #home="ngForm" (ngSubmit)="homeUsers(home)">
+                    <div class="card">
+                        <div class="card-header"><strong>License </strong> Home Users</div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label for="homeusers" class="control-label mb-1"> No.Of Users</label>
+                                <input type="text" class="form-control" placeholder="No.Of Users" name="homeusers" [(ngModel)]="license.homeusers" [ngClass]="{'is-invalid': homeusers.invalid && (homeusers.dirty || homeusers.touched),'is-valid': homeusers.valid && (homeusers.dirty || homeusers.touched)}"
+                                    pattern="^[0-9]*$" #homeusers="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="homeusers.valid || homeusers.pristine" class="invalid-feedback">
+                                    Number Of Users is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">License Discount</label>
+                                <input type="text" placeholder="License Discount" class="form-control" name="hclicenselDiscount" [(ngModel)]="license.hclicenselDiscount" [ngClass]="{'is-invalid': hclicenselDiscount.invalid && (hclicenselDiscount.dirty || hclicenselDiscount.touched),'is-valid': hclicenselDiscount.valid && (hclicenselDiscount.dirty || hclicenselDiscount.touched)}"
+                                    pattern="^[0-9]*$" #hclicenselDiscount="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="hclicenselDiscount.valid || hclicenselDiscount.pristine" class="invalid-feedback">
+                                    License Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Device Discount</label>
+                                <input type="text" placeholder="Device Discount" class="form-control" name="hdeviceDiscount" [(ngModel)]="license.hdeviceDiscount" [ngClass]="{'is-invalid': hdeviceDiscount.invalid && (hdeviceDiscount.dirty || hdeviceDiscount.touched),'is-valid': hdeviceDiscount.valid && (hdeviceDiscount.dirty || hdeviceDiscount.touched)}"
+                                    pattern="^[0-9]*$" #hdeviceDiscount="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="hdeviceDiscount.valid || hdeviceDiscount.pristine" class="invalid-feedback">
+                                    Device Discount is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">License Cost</label>
+                                <input type="text" placeholder="License Cost" class="form-control" name="hlicenseCost" [(ngModel)]="license.hlicenseCost" [ngClass]="{'is-invalid': hlicenseCost.invalid && (hlicenseCost.dirty || hlicenseCost.touched),'is-valid': hlicenseCost.valid && (hlicenseCost.dirty || hlicenseCost.touched)}"
+                                    pattern="^[0-9]*$" #hlicenseCost="ngModel" oninput="validity.valid||(value='');" required>
+                                <div [hidden]="hlicenseCost.valid || hlicenseCost.pristine" class="invalid-feedback">
+                                    License Cost is required
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" (click)="homeUsers(home)" [disabled]="home.invalid">Update</button>.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- .animated -->
+</div>

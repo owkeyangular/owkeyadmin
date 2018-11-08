@@ -1,0 +1,160 @@
+<div class="breadcrumb">
+    <h5>Send User Access</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <form #frm="ngForm" (ngSubmit)="accessUser(frm)">
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <div class="card">
+                        <div class="card-header"><strong>Access</strong></div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label for="Company" class="form-control-label">Company</label>
+                                <input list="exampleList" class="form-control" type="text" name="company" placeholder="Enter Company Name" [(ngModel)]="access.company" [ngClass]="{'is-invalid': company.invalid && (company.dirty || company.touched),'is-valid': company.valid && (company.dirty || company.touched)}"
+                                    pattern="^[a-zA-Z ]*$" #company="ngModel" oninput="validity.valid||(value='');" required>
+                                <datalist id="exampleList">
+                                    <option value="lorem ipsum">
+                                    <option value="lorem ipsum">
+                                </datalist>
+                                <div [hidden]="company.valid || company.pristine" class="invalid-feedback">
+                                    Company Name is required
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Device Name</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="device" [(ngModel)]="access.device" [ngClass]="{'is-invalid': device.invalid && (device.dirty || device.touched),'is-valid': device.valid && (device.dirty || device.touched)}" #device="ngModel"
+                                    required>
+                                    <option selected>Select Device Name</option>
+                                    <option>Device1</option>
+                                    <option>Device2</option>
+                                    <option>Device3</option>
+                                    <option>Device4</option>
+                                </select>
+                                <div [hidden]="device.valid || device.pristine" class="invalid-feedback">
+                                    Device Name is required
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="FormControlSelect2">User Email Id</label>
+                                <select class="form-control" id="FormControlSelect2" name="email" [(ngModel)]="access.email" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched),'is-valid': email.valid && (email.dirty || email.touched)}" #email="ngModel" required>
+                                    <option selected> select</option>
+                                    <option>karthik@cogniermail.com</option>
+                                    <option>adnan@cogniermail.com</option>
+                                    <option>junaid@cogniermail.com</option>
+                                    <option>vamshi@cogniermail.com</option>
+                                </select>
+                                <div [hidden]="email.valid || email.pristine" class="invalid-feedback">
+                                    Device Name is required
+                                </div>
+                            </div>
+
+                            <div class=" row form-group">
+                                <div class="col-6">
+                                    <label for="cc-payment" class="control-label mb-1"> From</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="from" [(ngModel)]="access.from" #from="ngModel" [ngClass]="{'is-invalid': from.invalid && (from.dirty || from.touched),'is-valid': from.valid && (from.dirty || from.touched)}" bsDatepicker required>
+                                        <div [hidden]="from.valid || from.pristine" class="invalid-feedback">
+                                            Date is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="cc-payment" class="control-label mb-1"> To</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="to" [(ngModel)]="access.to" #to="ngModel" [ngClass]="{'is-invalid': to.invalid && (to.dirty || to.touched),'is-valid': to.valid && (to.dirty || to.touched)}" bsDatepicker required>
+                                        <div [hidden]="to.valid || to.pristine" class="invalid-feedback">
+                                            Date is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-1 rm-35">
+                                    <label class="container-check">
+                                        <input type="checkbox" checked="checked"  name="checkin" [(ngModel)]="access.checkin" #checkin="ngModel" required>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="col-5 pl-0">
+                                    <label for="cc-payment" class="control-label mb-1"> CheckIn</label>
+                                    <timepicker [disabled]="!access.checkin"></timepicker>
+                                    <div [hidden]="checkin.valid || checkin.pristine" class="invalid-feedback">
+                                        CheckIn is required
+                                    </div>
+                                </div>
+                                <div class="col-1 rm-35">
+                                    <label class="container-check">
+                                            <input type="checkbox" checked="checked"  name="checkout" [(ngModel)]="access.checkout" #checkout="ngModel" required>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="col-5 pl-0">
+                                    <label for="checkout" class="control-label mb-1"> CheckOut</label>
+                                    <timepicker [disabled]="!access.checkout"></timepicker>
+                                    <div [hidden]="checkout.valid || checkout.pristine" class="invalid-feedback">
+                                        CheckOut is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-1 rm-2">
+                                    <label class="container-check">
+                                        <input type="checkbox" checked="checked" name="hourscheck" [(ngModel)]="access.hourscheck" #hourscheck="ngModel" required>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="col-5">
+                                    <label for="hours" class="control-label mb-1"> Hours</label>
+                                    <input type="text" class="form-control" [disabled]="!access.hourscheck" name="hours" [(ngModel)]="access.hours" #hours="ngModel" [ngClass]="{'is-invalid': hours.invalid && (hours.dirty || hours.touched),'is-valid': hours.valid && (hours.dirty || hours.touched)}"
+                                        pattern="^[0-9]*$" oninput="validity.valid||(value='');" required>
+                                    <div [hidden]="hours.valid || hours.pristine" class="invalid-feedback">
+                                        Hours is required
+                                    </div>
+                                </div>
+                                <div class="col-1 rm-2">
+                                    <label class="container-check">
+                                        <input  type="checkbox" checked="checked"  name="visitcheck" [(ngModel)]="access.visitcheck" #visitcheck="ngModel" required>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="col-5">
+                                    <label for="cc-payment" class="control-label mb-1"> Visits</label>
+                                    <input type="text" class="form-control" [disabled]="!access.visitcheck" name="visits" [(ngModel)]="access.visits" #visits="ngModel" [ngClass]="{'is-invalid': visits.invalid && (visits.dirty || visits.touched),'is-valid': visits.valid && (visits.dirty || visits.touched)}"
+                                        pattern="^[0-9]*$" oninput="validity.valid||(value='');" required>
+                                    <div [hidden]="visits.valid || visits.pristine" class="invalid-feedback">
+                                        Visits is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group pt-3">
+                                <div class="col-12">
+                                    <label class="container-check">Guest
+                                        <input type="checkbox" checked="checked" name="guest" [(ngModel)]="access.guest" #guest="ngModel" required>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4 text-center">
+                                <button class="btn btn-primary" (click)="accessUser(frm)" [disabled]="frm.invalid">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,69 @@
+<div class="breadcrumb">
+    <h5>Bulk Upload</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <form #frm="ngForm" (ngSubmit)="bulkupload(frm)">
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <div class="card">
+                        <div class="card-header"><strong>Upload</strong></div>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label for="postal-code" class="form-control-label">Company Name</label>
+                                <input type="text" list="exampleList" class="form-control" type="text" name="company" placeholder="Enter Company Name" [(ngModel)]="group.company" [ngClass]="{'is-invalid': company.invalid && (company.dirty || company.touched),'is-valid': company.valid && (company.dirty || company.touched)}"
+                                    pattern="^[a-zA-Z ]*$" #company="ngModel" oninput="validity.valid||(value='');" required>
+                                <datalist id="exampleList">
+                                <option value="lorem ipsum">
+                                <option value="lorem ipsum">
+                                 </datalist>
+                                <div [hidden]="company.valid || company.pristine" class="invalid-feedback">
+                                    Company Name is required
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="postal-code" class="form-control-label">Group Name</label>
+                                <input type="text" list="exmpleList" class="form-control" type="text" name="groupname" placeholder="Enter Group Name" [(ngModel)]="group.groupname" [ngClass]="{'is-invalid': groupname.invalid && (groupname.dirty || groupname.touched),'is-valid': groupname.valid && (groupname.dirty || groupname.touched)}"
+                                    pattern="^[a-zA-Z ]*$" #groupname="ngModel" oninput="validity.valid||(value='');" required>
+                                <datalist id="exmpleList">
+                                    <option value="lorem ipsum">
+                                    <option value="lorem ipsum">
+                                     </datalist>
+                                <div [hidden]="groupname.valid || groupname.pristine" class="invalid-feedback">
+                                    Group Name is required
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-5">
+                                    <label for="vat" class=" form-control-label">Sample Upload Format :</label>
+                                </div>
+                                <div class="col-3">
+                                    <a href=""><img src="assets/img/avatars/excel.png" style="color:white;" width="30" height="30">Excel</a>
+                                </div>
+                                <div class="col-3">
+                                    <a href=""><img src="assets/img/avatars/csv.png" style="color:white;" width="30" height="30">CSV</a>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-12">
+                                    <!-- <a href=""><img src="assets/img/avatars/dropify.PNG" class="dropifyimg" style="color:white;"></a> -->
+                                    <input type="file" class="dropify" name="upload" [(ngModel)]="group.upload" #upload="ngModel" required>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <button class="btn btn-primary" (click)="bulkupload(frm)" [disabled]="frm.invalid"> Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

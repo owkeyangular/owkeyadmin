@@ -1,0 +1,159 @@
+<div class="breadcrumb">
+    <h5>Add Order</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <form #frm="ngForm" (ngSubmit)="sales(frm)">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><strong>Order Details</strong></div>
+                        <div class="card-body card-block">
+
+                            <div class=" form-group">
+                                <label for="exampleFormControlSelect1">Distributor Name</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="distributor" [(ngModel)]="addorder.distributor" [ngClass]="{'is-invalid': distributor.invalid && (distributor.dirty || distributor.touched),'is-valid': distributor.valid && (distributor.dirty || distributor.touched)}"
+                                    #distributor="ngModel" required>
+                                    <option>vamshi</option>
+                                    <option>karthik</option>
+                                    <option>junaid</option>
+                                    <option>adnan</option>
+                                </select>
+                            </div>
+                            <div class=" form-group">
+                                <label for="FormControlSelect1">Company Name</label>
+                                <select class="form-control" id="FormControlSelect1" name="companyname" [(ngModel)]="addorder.companyname" [ngClass]="{'is-invalid':companyname.invalid && (companyname.dirty || companyname.touched),'is-valid': companyname.valid && (companyname.dirty || companyname.touched)}"
+                                    #companyname="ngModel" required>
+                                    <option>companyname</option>
+                                    <option>cognier</option>
+                                    <option>ownet</option>
+                                    <option>companyname</option>
+                                </select>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-1 mt-2">
+                                    <label class="container-check">
+                                        <input type="checkbox" checked="checked" name="usercheck" [(ngModel)]="addorder.usercheck" #usercheck="ngModel" required>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 pl-0">
+                                    <input type="text" placeholder="Enter User Name" class="form-control" [disabled]="!addorder.usercheck" name="hours" [(ngModel)]="addorder.usercheck" #usercheck="ngModel" [ngClass]="{'is-invalid': usercheck.invalid && (usercheck.dirty || usercheck.touched),'is-valid': usercheck.valid && (usercheck.dirty || usercheck.touched)}"
+                                        required>
+                                    <div [hidden]="usercheck.valid || usercheck.pristine" class="invalid-feedback">
+                                        User Name is required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><strong>Devices</strong><small> Details</small></div>
+                        <div class="card-body card-block">
+
+                            <div class=" form-group">
+                                <label for="exampleFormControl">Product Name</label>
+                                <select class="form-control" id="exampleFormControl" name="productname" [(ngModel)]="addorder.productname" [ngClass]="{'is-invalid': productname.invalid && (productname.dirty || productname.touched),'is-valid': productname.valid && (productname.dirty || productname.touched)}"
+                                    #productname="ngModel" required>
+                                    <option>Select Product Name</option>
+                                    <option>lorem</option>
+                                    <option>lorem</option>
+                                    <option>lorem</option>
+                                    <option>lorem</option>
+                                </select>
+                            </div>
+                            <div class=" form-group">
+                                <label for="exampleFormControlSelect1">Model Number</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="modelnumber" [(ngModel)]="addorder.modelnumber" [ngClass]="{'is-invalid': modelnumber.invalid && (modelnumber.dirty || modelnumber.touched),'is-valid': modelnumber.valid && (modelnumber.dirty || modelnumber.touched)}"
+                                    #modelnumber="ngModel" required>
+                                    <option>Select Model Number</option>
+                                    <option>QSC123</option>
+                                    <option>QWE345</option>
+                                    <option>WDVF1234</option>
+                                    <option>WER567</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="vat" class=" form-control-label">Product Image :</label>
+                                <br><img src="assets/img/avatars/placeholder.png" width='100' alt=""> </div>
+                            <div class="form-group"><label for="vat" class=" form-control-label">Price :</label> 1200INR </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Quantiy :</label>
+                                <input type="text" placeholder="QTY" name="quantiy" class="form-control" maxlength=10 pattern="^[0-9]*$" oninput="validity.valid||(value='');" [(ngModel)]="addorder.quantiy" #quantiy="ngModel" [ngClass]="{'is-invalid': quantiy.invalid && (quantiy.dirty || quantiy.touched),'is-valid': quantiy.valid && (quantiy.dirty || quantiy.touched)}"
+                                    required>
+                                <div [hidden]="quantiy.valid || quantiy.pristine" class="invalid-feedback">
+                                    Quantiy is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class="form-control-label">Total Price :</label>5000INR</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="card ">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-3 pr-0">
+                                    <label class="container-check">
+                                    <input type="checkbox" checked="checked" name="licensing" [(ngModel)]="addorder.licensing" #licensing="ngModel" required>
+                                    <span class="checkmark licensing"></span> 
+                                </label>
+                                    <strong class="rm-2">Licensing</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="form-group"><label for="company" class=" form-control-label">Volume (No. Of
+                                        Users)</label><input type="text" placeholder="1000" class="form-control" pattern="^[0-9]*$" [disabled]="!addorder.licensing" name="volume" [(ngModel)]="addorder.volume" #volume="ngModel" [ngClass]="{'is-invalid': volume.invalid && (volume.dirty || volume.touched),'is-valid': volume.valid && (volume.dirty || volume.touched)}"
+                                            required>
+                                        <div [hidden]="volume.valid || volume.pristine" class="invalid-feedback">
+                                            Volume (No. Of Users) is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group"><label for="vat" class=" form-control-label">Price Details</label>
+                                        <input type="text" placeholder="Enter Price" class="form-control" [disabled]="!addorder.licensing" name="pricedetails" pattern="^[0-9]*$" [(ngModel)]="addorder.pricedetails" #pricedetails="ngModel" [ngClass]="{'is-invalid': pricedetails.invalid && (pricedetails.dirty || pricedetails.touched),'is-valid': pricedetails.valid && (pricedetails.dirty || pricedetails.touched)}"
+                                            required>
+                                        <div [hidden]="pricedetails.valid || pricedetails.pristine" class="invalid-feedback">
+                                            Price Details is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 rm-22 p-0">
+                                    <div class="form-group"><label for="vat" class=" form-control-label"> Per User / Year</label></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-10"></div>
+                <div class="col-lg-2  mb-3">
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <button class="btn btn-square btn-danger" type="button"><i class="fa fa-ban"></i>&nbsp;Reset</button>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-square btn-primary" (click)="sales(frm)" [disabled]="frm.invalid">
+                            <i class="fa fa-dot-circle-o"></i> &nbsp;Submit
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

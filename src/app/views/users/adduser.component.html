@@ -1,0 +1,170 @@
+<div class="breadcrumb">
+    <h5>Add User</h5>
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <!-- <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a> -->
+            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+    </li>
+</div>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <form #frm="ngForm" (ngSubmit)="Usersadd(frm)">
+            <div class="row">
+                <div class="col-lg-6 m-auto">
+                    <div class="card">
+                        <div class="card-header"><strong>Personal Details</strong></div>
+                        <div class="card-body card-block">
+
+                            <div class="form-group">
+                                <label for="cc-payment" class="control-label mb-1"> Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input placeholder="Enter Name" class="form-control" [(ngModel)]="adduser.username" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched),'is-valid': username.valid && (username.dirty || username.touched)}" pattern="^[a-zA-Z ]*$"
+                                        name="username" #username="ngModel" class="form-control" oninput="validity.valid||(value='');" required>
+                                </div>
+                                <div [hidden]="username.valid || username.pristine" class="invalid-feedback">
+                                    User Name is required
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="street" class=" form-control-label">Phone Number</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                    </div>
+                                    <input name="phone" type="name" placeholder="Enter Phone Number" class="form-control" min=0 maxlength=10 pattern="^[0-9]*$" oninput="validity.valid||(value='');" [ngClass]="{'is-invalid': phone.invalid && (phone.dirty || phone.touched),'is-valid': phone.valid && (phone.dirty || phone.touched)}"
+                                        [(ngModel)]="adduser.phone" #phone="ngModel" required>
+                                </div>
+                                <div [hidden]="phone.valid || phone.pristine" class="invalid-feedback">
+                                    Phone Number is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Email </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    </div>
+                                    <input name="email" type="text" name="email" placeholder="Enter Email Id" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched),'is-valid': email.valid && (email.dirty || email.touched)}"
+                                        [(ngModel)]="adduser.email" #email="ngModel" required>
+                                </div>
+                                <div [hidden]="email.valid || email.pristine" class="invalid-feedback">
+                                    Email Id is required
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="street" class=" form-control-label">Street</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-street-view"></i></span>
+                                    </div>
+                                    <input name="street" type="text" name="street" placeholder="Enter Street Name" class="form-control" oninput="validity.valid||(value='');" [(ngModel)]="adduser.street" pattern="^[a-zA-Z ]*$" #street="ngModel" [ngClass]="{'is-invalid': street.invalid && (street.dirty || street.touched),'is-valid': street.valid && (street.dirty || street.touched)}"
+                                        required>
+                                </div>
+                                <div [hidden]="street.valid || street.pristine" class="invalid-feedback">
+                                    Street Name is required
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-6">
+                                    <div class="form-group"><label for="city" class=" form-control-label">City</label><input type="text" placeholder="Enter your city" name="city" class="form-control" [(ngModel)]="adduser.city" oninput="validity.valid||(value='');" pattern="^[a-zA-Z ]*$"
+                                            #city="ngModel" [ngClass]="{'is-invalid': city.invalid && (city.dirty || city.touched),'is-valid': city.valid && (city.dirty || city.touched)}" required>
+                                        <div [hidden]="city.valid || city.pristine" class="invalid-feedback">
+                                            City Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group"><label for="state" class=" form-control-label">State</label><input type="text" placeholder="Enter your State" name="state" class="form-control" [(ngModel)]="adduser.state" pattern="^[a-zA-Z ]*$" oninput="validity.valid||(value='');"
+                                            #state="ngModel" [ngClass]="{'is-invalid': state.invalid && (state.dirty || state.touched),'is-valid': state.valid && (state.dirty || state.touched)}" required>
+                                        <div [hidden]="state.valid || state.pristine" class="invalid-feedback">
+                                            State Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group"><label for="postal-code" class=" form-control-label">Postal Code</label><input type="text" placeholder="Postal Code" pattern="[1-9][0-9]*" maxlength="6" oninput="validity.valid||(value='');" name="postal" class="form-control"
+                                            [(ngModel)]="adduser.postal" #postal="ngModel" [ngClass]="{'is-invalid': postal.invalid && (postal.dirty || postal.touched),'is-valid': postal.valid && (postal.dirty || postal.touched)}" required>
+                                        <div [hidden]="postal.valid || postal.pristine" class="invalid-feedback">
+                                            Postal Code is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Country</label>
+                                        <select class="form-control" name="country" [(ngModel)]="adduser.country" [ngClass]="{'is-invalid': country.invalid && (country.dirty || country.touched),'is-valid': country.valid && (country.dirty || country.touched)}" #country="ngModel" required>
+                                            <option>India</option>
+                                            <option>AUS</option>
+                                            <option>Canada</option>
+                                            <option>USA</option>
+                                            <option>UK</option>
+                                          </select>
+                                        <div [hidden]="country.valid || country.pristine" class="invalid-feedback">
+                                            Country is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-7">
+                                    <label for="exampleFormControlSelect1">Company </label>
+                                    <select class="form-control" id="exampleFormControlSelect1" name="gcompany" [(ngModel)]="adduser.gcompany" [ngClass]="{'is-invalid': gcompany.invalid && (gcompany.dirty || gcompany.touched),'is-valid': gcompany.valid && (gcompany.dirty || gcompany.touched)}"
+                                        #gcompany="ngModel" required>
+                                        
+                                        <option>Select Company</option>
+                                        <option>Company</option>
+                                    </select>
+                                    <div [hidden]="gcompany.valid || gcompany.pristine" class="invalid-feedback">
+                                        Company Name is required
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="rm-2">
+                                        <button type="submit" class="btn btn-primary btn-block">Check</button>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="rm-2">
+                                        <span class="icon-padding"><i class="fa fa-check-circle" style="font-size:24px;color:green"></i></span>
+                                        <span class="icon-padding"><i class="fa fa-times-circle" style="font-size:24px;color:red"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="postal-code" class="form-control-label">Group</label>
+                                <input class="form-control" type="text" list="exampleList" name="grouplist" [(ngModel)]="adduser.grouplist" [ngClass]="{'is-invalid': grouplist.invalid && (grouplist.dirty || grouplist.touched),'is-valid': grouplist.valid && (grouplist.dirty || grouplist.touched)}"
+                                    #grouplist="ngModel" required>
+                                <datalist id="exampleList">
+                                    <option value="A">
+                                    <option value="B">
+                                </datalist>
+                                <div [hidden]="grouplist.valid || grouplist.pristine" class="invalid-feedback">
+                                    Company Name is required
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10"></div>
+                <div class="col-lg-2  mb-3">
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <button class="btn btn-square btn-danger" type="button"><i class="fa fa-ban"></i>&nbsp;Reset</button>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-square btn-primary" (click)="Usersadd(frm)" [disabled]="frm.invalid">
+                            <i class="fa fa-dot-circle-o"></i> &nbsp;Submit
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

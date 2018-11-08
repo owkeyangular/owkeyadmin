@@ -1,0 +1,26 @@
+export class AddUser{
+    username:string;
+    phone:string;
+    email:string;
+    street:string;
+    city:string;
+    state:string;
+    postal:string;
+    country:string;
+    company:string;
+    gst:string;
+    password:string;
+    cphone:string;
+    cemail:string;
+    hnumber:string;
+    cstreet:string;
+    ccity:string;
+    cstate:string;
+    cpostal:string;
+    ccountry:string;
+    nusers:string;
+    price:string;
+    distributor:string;
+    gcompany:string;
+    grouplist:string;
+}
